@@ -23,14 +23,16 @@
 
         .container {
             position: relative;
-            width: 600px;
-            height: 600px;
+            width: 100vw;
+            height: 100vh;
+            max-width: 600px;
+            max-height: 600px;
         }
 
         .photo {
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
             border-radius: 50%;
             background-size: cover;
             background-position: center;
@@ -223,11 +225,31 @@
             left: 50%;
             transform: translateX(-50%);
             color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
             font-weight: 300;
             text-align: center;
             opacity: 0;
             animation: titleFade 2s ease 2.5s forwards;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .title {
+                top: 20px;
+            }
+            
+            .name {
+                top: 70px;
+            }
+            
+            .subtitle {
+                bottom: 30px;
+            }
+            
+            .photo:hover::after {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
@@ -255,7 +277,10 @@
             const container = document.getElementById('photoContainer');
             const centerX = container.offsetWidth / 2;
             const centerY = container.offsetHeight / 2;
-            const radius = 200;
+            
+            // Responsive radius calculation
+            const baseRadius = Math.min(container.offsetWidth, container.offsetHeight) * 0.35;
+            const radius = Math.max(baseRadius, 120); // Minimum radius of 120px
             
             photos.forEach((photo, index) => {
                 let x, y;
