@@ -4,8 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABOUT ME</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, gold 0%, silver 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        }
+
+        /* Hide body scrollbar */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .about {
+            position: fixed;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #16202a;
+            font-size: clamp(1.2rem, 6vw, 2rem);
+            font-weight: 300;
+            text-align: center;
+            opacity: 0;
+            animation: titleFade 2s ease 2.2s forwards;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            max-width: 90vw;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* Internet Explorer 10+ */
+        } 
+
+        /* Hide .about scrollbar */
+        .about::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .about p {
+            margin-bottom: 4.0rem; /* Adjust this value to change paragraph spacing */
+        }
+          
+        @keyframes titleFade {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            } 
+        } 
+    </style>
 </head>
 <body>
-    <h1>big words</h1>
+    <div class="about">
+        <p>Hello.</p>
+        <p>This site is still under construction.</p>
+        <p>Eventually, I will have link to the L&J Environmental Website (also under construction) in addition to essentially, resumes, for each of my experience areas and my education.</p>
+        <p>But for now, June 6th, 2025, it is only started.</p>
+    </div>
 </body>
 </html>
